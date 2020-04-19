@@ -339,7 +339,7 @@ void Total2(long num[], float score[], int n);
 //参数说明：数组 num 存放学生的学号，数组 score 存放学生的分数，n 班级实际人数
 //返回值：无
 */
-int Input(long num[], float score[], int array_size);
+/*int Input(long num[], float score[], int array_size);
 void Total1(long num[], float score[], int n);
 void Total2(long num[], float score[], int n);
 int main()
@@ -418,7 +418,7 @@ for (int i = 0; i <= n; i++)
 	cout << "The score>=average is:" << total << endl;
 	
 
-};
+};*/
 /*int main()
 {
 	int count = 0;
@@ -596,3 +596,172 @@ void Total2(long num[], float score[], int n)
 	cout << "The score>=average is:" << total << endl;
 }
 */
+#define  MAXNUM 30
+const int COURSENUM = 3;
+int Input(long num[], float score[][COURSENUM], int array_size); 
+void Total1(float score[][3], float sum[], float aver[], int n); //Total1:单个学生
+void Total2(float score[][3], float sum[], float aver[], int n);//Total2:总体
+void Total3(long num[], float score[][COURSENUM], float sum[], float aver[], int n);//Total3:排序
+void Print(long num[], float score[][COURSENUM], float sum1[], float aver1[], float sum2[], float aver2[], int n);
+int main()
+{
+	long num[MAXNUM] = { 0 };
+	float score[MAXNUM][3] = { 0 };
+	float averstu[MAXNUM] = { 0 };
+	float sumstu[MAXNUM] = { 0 };
+	float avercourse[COURSENUM] = { 0 };
+	float sumcourse[COURSENUM] = { 0 };
+	int size = Input(num, score, MAXNUM);//size：size是总人数
+	//if (size == 0)
+	//{
+	/*	cout << "Pos	Number	Grad1	Grad2	Grad3	" ;
+		cout << "Sum1	Aver1" << endl;
+		cout << "No	Sum2	Aver2" << endl;
+		cout << "1	0	0" << endl;
+		cout << "2	0	0" << endl;
+		cout << "3	0	" ;
+		cout << "0";*/
+	//}
+	//else if(size!=-1)
+	{
+
+
+		Total1(score, sumstu, averstu, size);
+		Total2(score, sumcourse, avercourse, size);
+		Total3(num, score, sumstu, averstu, size);
+		Print(num, score, sumstu, averstu, sumcourse, avercourse, size);
+	}
+	return 0;
+}
+
+int Input(long num[], float score[][COURSENUM], int array_size)
+{
+	//TODO: 通过终端输入学生学号和分数
+	
+	for (int i = 0; i <array_size; i++)
+	{
+		long temp = 0;
+		float temp1,temp2,temp3 = 0;
+
+		cin >> temp;
+		if (!(temp >= 0))
+		{
+			return i ;
+		}
+		cin>> temp1 >> temp2 >> temp3;
+
+		if (temp >= 0)
+		{
+			//for (int j = 0; j <= COURSENUM - 1; j++)
+			//{
+			//	score[i][j]
+			//}
+			score[i][0] = temp1;
+			score[i][1] = temp2;
+			score[i][2] = temp3;
+			num[i] = temp;
+		}
+		
+
+
+	}
+	return MAXNUM;//没有触发-1要给一个返回值
+
+};
+
+void Total1(float score[][COURSENUM], float sum[], float aver[], int n)
+
+{
+	if (n == 0)
+	{
+		return;
+	}
+	else {
+		for (int i = 0; i <n; i++)
+		{
+			for (int j = 0; j <= COURSENUM-1; j++)
+			{
+				sum[i] += score[i][j];
+			}
+			aver[i] = sum[i] / 3;
+		}
+	}
+	
+}
+void Total2(float score[][COURSENUM], float sum[], float aver[], int n)
+{
+	//变量声明：total:及格人数
+	if (n == 0)
+	{
+		return;
+	}
+	else {
+		for (int i = 0; i <= COURSENUM -1; i++)
+		{
+			for (int j = 0; j < n; j++)
+			{
+				sum[i] += score[j][i];
+
+			}
+			aver[i] = sum[i] / (n);
+		}
+	}
+};
+void Total3(long num[], float score[][COURSENUM], float sum[], float aver[], int n)
+{
+	if (n == 0)
+	{
+		return;
+	}
+	else {
+		bool swapCheck = true;
+		for (int i = 0; i < n; i++)
+		{
+			swapCheck = false;
+			for (int j = 0; j < n - i; j++)
+			{
+
+				if ((sum[j] < sum[j + 1]))
+				{
+					float tmp = 0;
+					int  tmpp = 0;
+					tmp = sum[j];
+					sum[j] = sum[j + 1];
+					sum[j + 1] = tmp;//以上对sum排序
+					tmpp = num[j];
+					num[j] = num[j + 1];
+					num[j + 1] = tmpp;//以上对num排序
+					tmp = aver[j];
+					aver[j] = aver[j + 1];
+					aver[j + 1] = tmp;//以上对aver排序
+					tmp = score[j][0];
+					score[j][0] = score[j + 1][0];
+					score[j + 1][0] = tmp;
+					tmp = score[j][1];
+					score[j][1] = score[j + 1][1];
+					score[j + 1][1] = tmp;
+					tmp = score[j][2];
+					score[j][2] = score[j + 1][2];
+					score[j + 1][2] = tmp;//对三个score排序
+					swapCheck = true;
+
+				}
+			}
+			if (swapCheck == false)
+				break;
+		}
+	}
+}
+void Print(long num[], float score[][COURSENUM], float sum1[], float aver1[], float sum2[], float aver2[], int n)
+{
+	cout << "Pos\tNumber\tGrad1\tGrad2\tGrad3\tSum1\tAver1" << endl;
+	for (int i = 0; i < n; i++)
+	{
+		cout << (i+1) <<"\t"<< num[i] <<"\t"<< score[i][0] <<"\t"<< score[i][1] <<"\t"<< score[i][2] <<"\t"<< sum1[i] <<"\t"<< aver1[i] << endl;
+	}
+	cout << "No\tSum2\tAver2" << endl;
+	for (int i = 0; i <= COURSENUM-1; i++)
+	{
+		cout << (i + 1) << "\t" << sum2[i] << "\t" << aver2[i] << endl;
+	}
+}
