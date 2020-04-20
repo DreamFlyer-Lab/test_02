@@ -594,10 +594,9 @@ void Total2(long num[], float score[], int n)
 	//TODO: 打印平均分之上同学的名单
 
 	cout << "The score>=average is:" << total << endl;
-}
-*/
-#define  MAXNUM 30
-const int COURSENUM = 3;
+}*/
+/*2.0版本成绩统计*/
+/* int COURSENUM = 3;
 int Input(long num[], float score[][COURSENUM], int array_size); 
 void Total1(float score[][3], float sum[], float aver[], int n); //Total1:单个学生
 void Total2(float score[][3], float sum[], float aver[], int n);//Total2:总体
@@ -612,25 +611,15 @@ int main()
 	float avercourse[COURSENUM] = { 0 };
 	float sumcourse[COURSENUM] = { 0 };
 	int size = Input(num, score, MAXNUM);//size：size是总人数
-	//if (size == 0)
-	//{
-	/*	cout << "Pos	Number	Grad1	Grad2	Grad3	" ;
-		cout << "Sum1	Aver1" << endl;
-		cout << "No	Sum2	Aver2" << endl;
-		cout << "1	0	0" << endl;
-		cout << "2	0	0" << endl;
-		cout << "3	0	" ;
-		cout << "0";*/
-	//}
-	//else if(size!=-1)
-	{
+	
+	
 
 
 		Total1(score, sumstu, averstu, size);
 		Total2(score, sumcourse, avercourse, size);
 		Total3(num, score, sumstu, averstu, size);
 		Print(num, score, sumstu, averstu, sumcourse, avercourse, size);
-	}
+	
 	return 0;
 }
 
@@ -764,4 +753,81 @@ void Print(long num[], float score[][COURSENUM], float sum1[], float aver1[], fl
 	{
 		cout << (i + 1) << "\t" << sum2[i] << "\t" << aver2[i] << endl;
 	}
+}
+*/
+/*#define NUM 30
+int main()
+{
+	int num[NUM] = { 0 };
+	int avg[NUM/5] = { 0 };
+	for (int i = 0; i <= NUM-1; i++)
+	{
+		num[i] = 2 * i + 2;
+		//cout << num[i]<<"\t";
+	}
+	
+	for (int i = 0; i <= NUM/5-1; i++)
+	{
+		int temp = 0;
+		for (int j = 0; j <= 4; j++)
+		{
+			temp += num[5*i + j];
+		}
+		avg[i] = temp/5;
+	}
+	for (int i = 0; i <= NUM/5 - 1; i++)
+	{
+		cout << setw(6) << avg[i];
+	}
+	
+}*/
+#define MAXSTU 40
+int main()
+{
+	int score[40] = { 0 };
+	int max = 0;
+	for (int i = 0; i < MAXSTU; i++)
+	{
+		int temp = 0;
+
+		cout << "Input score:";
+		cin >> temp;
+		if (temp >= 0)
+		{
+			score[i] = temp;
+		}
+
+
+		if (!(temp >= 0))
+		{
+			max = i;
+			break;
+		}
+		max = MAXSTU ;
+	}
+	cout << "Total students are " << max<<endl;
+	bool swapCheck = true;
+	for (int i = 0; i < max-1; i++)
+	{
+		swapCheck = false;
+		for (int j = 0; j < max-1 - i; j++)
+		{
+
+			if ((score[j] <score[j + 1]))
+			{
+				
+				int  tmp = 0;
+				tmp = score[j];
+				score[j] = score[j + 1];
+				score[j + 1] = tmp;
+				swapCheck = true;
+
+			}
+		}
+		if (swapCheck == false)
+			break;
+	}
+	cout << "Sorted scores:";
+	for (int i = 0; i <= max - 1; i++)
+		cout << setw(4)<<score[i];
 }
