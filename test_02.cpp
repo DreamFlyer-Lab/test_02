@@ -205,7 +205,7 @@ int main()
 }*/
 /*int main()
 {
-	cout << "Please input x and y:";
+	cout << "Please input x and y:\n";
 	float a, b,c;
 	a = b =c= 0.0;
 	cin >> a >> b;
@@ -780,8 +780,7 @@ int main()
 		cout << setw(6) << avg[i];
 	}
 	
-}*/
-#define MAXSTU 40
+/*#define MAXSTU 40
 int main()
 {
 	int score[40] = { 0 };
@@ -830,4 +829,219 @@ int main()
 	cout << "Sorted scores:";
 	for (int i = 0; i <= max - 1; i++)
 		cout << setw(4)<<score[i];
+}*/
+/*根据用户输入的整数输出图形，例如用户输入4，打印出以下图案：
+          * 
+       *  *  * 
+    *  *  *  *  * 
+ *  *  *  *  *  *  * 
+    *  *  *  *  * 
+       *  *  * 
+          *
+注意：最中间一行前面没有空格，两个相邻星号之间间隔两个空格，每行的末尾在*后和换行之前没有空格直接输出换行。
+
+输入输出实例1：
+Please enter n(n>=1):7↙
+                  *
+               *  *  *
+            *  *  *  *  *
+         *  *  *  *  *  *  *
+      *  *  *  *  *  *  *  *  *
+   *  *  *  *  *  *  *  *  *  *  *
+*  *  *  *  *  *  *  *  *  *  *  *  *
+   *  *  *  *  *  *  *  *  *  *  *
+      *  *  *  *  *  *  *  *  *
+         *  *  *  *  *  *  *
+            *  *  *  *  *
+               *  *  *
+                  *
+输入输出实例2：
+Please enter n(n>=1):10↙
+                           *
+                        *  *  *
+                     *  *  *  *  *
+                  *  *  *  *  *  *  *
+               *  *  *  *  *  *  *  *  *
+            *  *  *  *  *  *  *  *  *  *  *
+         *  *  *  *  *  *  *  *  *  *  *  *  *
+      *  *  *  *  *  *  *  *  *  *  *  *  *  *  *
+   *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *
+*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *
+   *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *
+      *  *  *  *  *  *  *  *  *  *  *  *  *  *  *
+         *  *  *  *  *  *  *  *  *  *  *  *  *
+            *  *  *  *  *  *  *  *  *  *  *
+               *  *  *  *  *  *  *  *  *
+                  *  *  *  *  *  *  *
+                     *  *  *  *  *
+                        *  *  *
+                           *
+输入输出实例3：
+Please enter n(n>=1):1↙
+*
+*/
+/*int main()
+{
+	int p = 0;
+	cout << "Please enter n(n>=1):";
+	cin >> p;
+	for (int i = 1; i <= 2 * p - 1; i++)
+	{
+		if (i <= p)
+		{
+			for (int k = 1; k <= ((2 * p - 1 - (2 * i - 1)) / 2) * 3; k++)
+			{
+				cout << " ";
+				
+			}
+			for (int j = 1; j <= 2*i-1; j++)
+		    {
+			    
+				cout << "*";
+				if (i != 2 * i - 1)
+					cout << "  ";
+				
+		    }
+			
+		}
+		if (i > p)
+		{
+			for (int k = 1; k <= ((2 * p - 1 - (2 * (2 * p - 1 - i) - 1)) / 2) * 3; k++)
+				cout << " ";
+			for (int j = 1; j<=2*(2*p-1-i)-1; j++)
+			{
+				cout << "*";
+				if (i != 2 * (2 * p - 1 - i) - 1)
+					cout << "  ";
+			}
+			
+		}
+		cout << endl;
+	}
+
+}
+*/
+/*int main()
+{
+	int num ,year,month,date= 0;
+	float price = 0;
+	cout << "Enter item number:\n";
+	cin >> num;
+	cout << "Enter unit price:\n";
+	cin >> price;
+	cout << "Enter purchase date (yy mm dd):\n";
+	cin >> year >> month >> date;
+	cout << "Item      Unit     Purchase\n";
+	cout << left << setw(9) << num << "$" << left << setw(9) <<fixed<<setprecision(2)<< price << right << setw(2) << setfill('0') << month<< "/" <<setw(2) << date << "/" <<setw(2)<< year;
+	return 0;
+
+}*/
+/*int main()
+{
+	cout << "Please input fahr: ";
+	float a,b = 0;
+	cin >> a;
+	b = 5.0 *(a-32.0)/9.0;
+	cout << "The cels is: " << fixed << setprecision(2) << b;
+
+}*/
+/*int main()
+{
+	int a, b, c = 0;
+	cout << "Enter two numbers:";
+	cin >> a >> b;
+	if (b == 0)
+	{
+		cout << "cannot divide by zero.";
+		return 0;
+	}
+	c = a / b;
+	cout << c;
+	return 0;
+}*/
+/*int main()
+{
+	cout << "请输入三个单精度数：";
+	float a, b, c,d,e = 0;
+	cin >> a >> b >> c;
+	d = (a + b + c);
+	e= d / 3;
+	cout << fixed<<setprecision(3)<<"三个数的和为" << d << "，均值为" << e;
+}*/
+/*int main ()
+{
+
+	cout << "Please input your age :";
+	long p = 0;
+	cin >> p;
+	cout << "The heart beats in your life: " << (p * 365 * 24 * 60 * 75);
+
+}*/
+/*int main()
+{
+	int p, q = 0;
+	cout << "请输入第一个整数：";
+	cin >> p;
+	cout << "请输入第二个整数：";
+	cin >> q;
+	cout << p << " + " << q << " = " << (p + q);
+	return 0;
+
+}*/
+/*int main()
+{
+	int p = 0;
+	cout << "Enter an integer: ";
+	cin >> p;
+	if (p % 2 == 0 && p > 0)
+		cout << "The integer is a positive even number\n";
+	if (p % 2 == 0 && p < 0)
+		cout << "The integer is a negative even number\n";
+	if (p % 2 != 0 && p > 0)
+		cout << "The integer is a positive odd number\n";
+	if (p % 2 != 0 && p < 0)
+		cout << "The integer is a negative odd number\n";
+	if (p == 0)
+		cout << "The integer is zero\n";
+	return 0;
+
+}*/
+/*int main()
+{
+	int p = 0;
+	int q = 1;
+	cout << "Input m:";
+	cin >> p;
+
+	for (int i = 1; i <= p; i++)
+	{
+		q *= i;
+	}
+	cout << p << "! = " << q;
+	return 0;
+}*/
+/*int main()
+{
+	int p, a, b, c = 0;
+	cout << "Input n:";
+	cin >> p;
+	c = p % 10;
+	b = (p % 100 - c )/10;
+	a = (p - c - b * 10) / 100;
+	cout << "b2=" <<a<< "\tb1="<<b<<"\tb0="<<c <<"\t"<<"sum="<<(a+b+c)<<"\n";
+}*/
+/*int main()
+{
+	cout << "Please input cels: ";
+	float a, b = 0;
+	cin >> a;
+	b = 9.0*a/5.0+32.0;
+	cout << "The fahr is: " << fixed << setprecision(2) << b;
+
+}*/
+int main()
+{
+	cout<<"year=12"<<endl;
+	cout << "mingAge=24"<<endl;
+	cout << "motherAge=48" << endl;
 }
